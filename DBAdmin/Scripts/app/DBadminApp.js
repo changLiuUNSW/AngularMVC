@@ -1,4 +1,4 @@
-﻿var app = angular.module('DBAdmin', ['ui.bootstrap', 'ngCookies']);
+﻿var app = angular.module('DBAdmin', ['ui.bootstrap', 'ngCookies', 'ngRoute']);
 
 /**
  * Loading Directive

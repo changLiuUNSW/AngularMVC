@@ -15,11 +15,6 @@
     <link rel="stylesheet" type="text/css" href="css/themes/red.css">
     -->
 
-    <script type="text/javascript" src="~/Scripts/angular/angular.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/angular/angular-cookies.js"></script>
-    <script type="text/javascript" src="~/Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/app/DBadminApp.js"></script>
-
 </head>
 <body ng-controller="MasterCtrl">
     <div id="page-wrapper" ng-class="{'active': toggle}" ng-cloak>
@@ -145,6 +140,8 @@
             </div><!-- End Page Content -->
         </div><!-- End Content Wrapper -->
     </div><!-- End Page Wrapper -->
+    @Scripts.Render("~/bundles/scripts");
+    @Scripts.Render("~/bundles/appScripts");
     @RenderSection("scripts", required: false)
 </body>
 </html>
