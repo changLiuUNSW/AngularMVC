@@ -4,27 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Dashboard</title>
+    <title>@ViewBag.Title</title>
 
     <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="~/Content/dashboard.css">
     <link rel="stylesheet" type="text/css" href="~/Content/blue.css">
+    <link ref="stylesheet" type="text/css" href="~/Content/loading-bar.min.css"/>
     <!--
-    <link rel="stylesheet" type="text/css" href="css/themes/green.css">
-    <link rel="stylesheet" type="text/css" href="css/themes/red.css">
-    -->
-
+        <link rel="stylesheet" type="text/css" href="css/themes/green.css">
+        <link rel="stylesheet" type="text/css" href="css/themes/red.css">
+        -->
+    @RenderSection("styles", required: false)
+    @Scripts.Render("~/bundles/modernizr")
 </head>
-<body ng-controller="MasterCtrl">
-    <div id="page-wrapper" ng-class="{'active': toggle}" ng-cloak>
+<body data-ng-controller="MasterCtrl">
+    <div id="page-wrapper" data-ng-class="{'active': toggle}" data-ng-cloak>
 
         <!-- Sidebar -->
 
         <div id="sidebar-wrapper">
             <ul class="sidebar">
                 <li class="sidebar-main">
-                    <a href="#" ng-click="toggleSidebar()">
+                    <a href="#" data-ng-click="toggleSidebar()">
                         Dashboard
                         <span class="menu-icon glyphicon glyphicon-transfer"></span>
                     </a>
@@ -82,50 +84,7 @@
                         </div>
                         <div class="user pull-right">
                             <div class="item dropdown">
-                                <a href="#" class="dropdown-toggle">
-                                    <img src="~/Content/avatar.jpg">
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li class="dropdown-header">
-                                        Joe Bloggs
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li class="link">
-                                        <a href="#">
-                                            Profile
-                                        </a>
-                                    </li>
-                                    <li class="link">
-                                        <a href="#">
-                                            Menu Item
-                                        </a>
-                                    </li>
-                                    <li class="link">
-                                        <a href="#">
-                                            Menu Item
-                                        </a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li class="link">
-                                        <a href="#">
-                                            Logout
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="item dropdown">
-                                <a href="#" class="dropdown-toggle">
-                                    <i class="fa fa-bell-o"></i>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-right">
-                                    <li class="dropdown-header">
-                                        Notifications
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href="#">Server Down!</a>
-                                    </li>
-                                </ul>
+                                @Html.Partial("_LoginPartial")
                             </div>
                         </div>
                     </div>
@@ -133,10 +92,9 @@
 
                 <!-- End Header Bar -->
                 <!-- Main Content -->
-               
                 @RenderBody()
                 <!-- End Main Content -->
-                
+
             </div><!-- End Page Content -->
         </div><!-- End Content Wrapper -->
     </div><!-- End Page Wrapper -->

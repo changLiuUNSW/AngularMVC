@@ -10,6 +10,8 @@ namespace DBAdmin.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Title = "DashBoard";
+
             return View();
         }
 

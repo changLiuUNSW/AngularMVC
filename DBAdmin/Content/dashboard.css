@@ -227,15 +227,13 @@
     display: block;
   }
   .row.header .user > .item {
-    width: 65px;
-    height: 60px;
+    padding: 11px 11px 0 0;
     float: right;
     display: inline-block;
     text-align: center;
     vertical-align: middle;
   }
   .row.header .user > .item a {
-    color: #919191;
     display: block;
   }
   .row.header .user > .item i {

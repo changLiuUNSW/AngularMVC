@@ -1,4 +1,8 @@
-﻿var app = angular.module('DBAdmin', ['ui.bootstrap', 'ngCookies', 'ngRoute']);
+﻿var app = angular.module('DBAdmin', ['ui.bootstrap', 'ngCookies', 'ngRoute', 'chieffancypants.loadingBar', 'ngAnimate'])
+    .config(function (cfpLoadingBarProvider) {
+        cfpLoadingBarProvider.includeSpinner = true;
+
+});
 
 /**
  * Loading Directive
@@ -59,9 +63,7 @@ app.controller('MasterCtrl', function ($scope, $cookieStore) {
  * Alerts Controller
  */
 app.controller('AlertsCtrl', function ($scope) {
-    $scope.alerts = [
-        { type: 'success', msg: 'Thanks for visiting! Feel free to create pull requests to improve the dashboard!' },
-        { type: 'danger', msg: 'Found a bug? Create an issue with as many details as you can.' }
+    $scope.alerts = [ 
     ];
 
     $scope.addAlert = function () {
