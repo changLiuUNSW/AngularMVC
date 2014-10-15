@@ -129,6 +129,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\loading-bar.min.css" />
     <Content Include="Content\loading.css" />
+    <Content Include="Content\ng-table.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -333,10 +334,13 @@
     <Content Include="Scripts\angular\i18n\angular-locale_zh-hk.js" />
     <Content Include="Scripts\angular\i18n\angular-locale_zh-tw.js" />
     <Content Include="Scripts\angular\i18n\angular-locale_zh.js" />
+    <Content Include="Scripts\app\controllers\aboutcontroller.js" />
     <Content Include="Scripts\app\DBadminApp.js" />
     <Content Include="Scripts\app\modules\loading-bar.min.js" />
+    <Content Include="Scripts\app\modules\ng-table.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\app\modules\ng-table.map" />
     <None Include="Scripts\jquery\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\jquery\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery\jquery-2.1.1.min.js" />
@@ -795,7 +799,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Scripts\app\controllers\" />
     <Folder Include="Scripts\app\services\" />
     <Folder Include="Scripts\testing\unit-tests\" />
   </ItemGroup>

@@ -1,4 +1,4 @@
-﻿var app = angular.module('DBAdmin', ['ui.bootstrap', 'ngCookies', 'ngRoute', 'chieffancypants.loadingBar', 'ngAnimate'])
+﻿var app = angular.module('DBAdmin', ['ui.bootstrap', 'ngCookies', 'ngRoute', 'chieffancypants.loadingBar', 'ngAnimate', 'ngTable'])
     .config(function (cfpLoadingBarProvider) {
         cfpLoadingBarProvider.includeSpinner = true;
 

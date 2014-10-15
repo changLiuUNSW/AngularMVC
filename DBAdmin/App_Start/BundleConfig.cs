@@ -14,7 +14,6 @@ namespace DBAdmin
           .Include("~/Scripts/modernizr-2.6.2-respond-1.1.0.js"));
             bundles.Add(new ScriptBundle("~/bundles/scripts")
                 .Include("~/Scripts/jquery/jquery-{version}.js")
-                .Include("~/Scripts/bootstrap.js")
                 .Include("~/Scripts/angular/angular.js")
                 .Include("~/Scripts/angular/angular-cookies.js")
                 .Include("~/Scripts/angular/angular-route.js")
@@ -26,7 +25,8 @@ namespace DBAdmin
                 .Include("~/Scripts/angular-ui/ui-bootstrap-tpls.min.js")
                 .Include("~/Scripts/kendo/2014.1.318/kendo.web.min.js")
                 .Include("~/Scripts/angular-kendo.js")
-                .Include("~/Scripts/app/modules/loading-bar.min.js"));
+                .Include("~/Scripts/app/modules/loading-bar.min.js")
+                .Include("~/Scripts/app/modules/ng-table.min.js"));
             bundles.Add(new Bundle("~/bundles/appScripts").Include("~/Scripts/app/DBadminApp.js"));
 #if DEBUG
             BundleTable.EnableOptimizations = false;
