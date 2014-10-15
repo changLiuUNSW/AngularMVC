@@ -1,8 +1,6 @@
 ﻿
 app.controller('AboutController', [
     '$scope', '$filter', 'ngTableParams', function($scope, $filter, ngTableParams) {
-
-
         $scope.toggleFilter = function (params) {
             params.settings().$scope.show_filter = !params.settings().$scope.show_filter;
         };

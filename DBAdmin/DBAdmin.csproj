@@ -112,6 +112,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -335,9 +336,11 @@
     <Content Include="Scripts\angular\i18n\angular-locale_zh-tw.js" />
     <Content Include="Scripts\angular\i18n\angular-locale_zh.js" />
     <Content Include="Scripts\app\controllers\aboutcontroller.js" />
+    <Content Include="Scripts\app\controllers\loginContoller.js" />
     <Content Include="Scripts\app\DBadminApp.js" />
     <Content Include="Scripts\app\modules\loading-bar.min.js" />
     <Content Include="Scripts\app\modules\ng-table.min.js" />
+    <Content Include="Scripts\app\services\authService.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\app\modules\ng-table.map" />
@@ -795,11 +798,11 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Scripts\app\services\" />
     <Folder Include="Scripts\testing\unit-tests\" />
   </ItemGroup>
   <ItemGroup>
