@@ -1,9 +1,14 @@
-﻿using System.Threading.Tasks;
+﻿using System.Security.Claims;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 using DBAdmin.ViewModels;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security;
 
 namespace DBAdmin.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         //
@@ -14,27 +19,37 @@ namespace DBAdmin.Controllers
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
         //
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public ActionResult Login(LoginViewModel model, string returnUrl)
         {
+            var repo = new AuthRepository();
             if (ModelState.IsValid)
             {
-//                var user = await UserManager.FindAsync(model.Email, model.Password);
-//                if (user != null)
-//                {
-//                    await SignInAsync(user, model.RememberMe);
-
+                ClaimsIdentity identity;
+                bool result = repo.Validate(model.UserName, model.Password, out identity);
+                if (!result)
+                {
+                    ViewBag.StatusMessage = "The username or password you entered is incorrect.";
+                    return View(model);
+                }
+                SignIn(identity,false);
                 return RedirectToLocal(returnUrl);
                 //}
             }
 
             // If we got this far, something failed, redisplay form
-            ViewBag.StatusMessage = "The username or password you entered is incorrect.";
+            ViewBag.StatusMessage = "Please input the username and password.";
             return View(model);
         }
 
@@ -45,6 +60,13 @@ namespace DBAdmin.Controllers
                 return Redirect(returnUrl);
             }
             return RedirectToAction("Index", "Home");
+        }
+
+
+        private void SignIn(ClaimsIdentity identity, bool isPersistent)
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+            AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
         }
     }
 }
