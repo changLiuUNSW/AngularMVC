@@ -67,9 +67,6 @@ namespace DBAdmin.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
-        //
-      
-
 
         private void SignIn(ClaimsIdentity identity, bool isPersistent)
         {

@@ -1,3 +1,4 @@
 AngularMVC
 ==========
-Angular + ASP MVC 
+Owin Auth + Active Directive
+Ng-table
