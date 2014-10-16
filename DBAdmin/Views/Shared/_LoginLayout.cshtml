@@ -1,0 +1,195 @@
+﻿
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>@ViewBag.Title</title>
+    <style>
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td,
+        article, aside, canvas, details, embed,
+        figure, figcaption, footer, header, hgroup,
+        menu, nav, output, ruby, section, summary,
+        time, mark, audio, video {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
+        /* HTML5 display-role reset for older browsers */
+        article, aside, details, figcaption, figure,
+        footer, header, hgroup, menu, nav, section {
+            display: block;
+        }
+
+        body {
+            font-size: 1em;
+            line-height: 1.5em;
+        }
+
+        ol, ul {
+            list-style: none;
+        }
+
+        blockquote, q {
+            quotes: none;
+        }
+
+            blockquote:before, blockquote:after,
+            q:before, q:after {
+                content: '';
+                content: none;
+            }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        .text-danger {
+            color:   #ff0000;
+        }
+     
+        body {
+            font-family: arial;
+            font-size: 12px;
+            height: 100%;
+        }
+
+        h1 {
+            font-weight: bold;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            color: #00334e;
+            text-shadow: #fff 0px 1px 0px;
+            text-align: center;
+        }
+
+        .wrap {
+            margin: 0 auto;
+            width: 680px;
+        }
+
+        .vertical {
+            top: 50%;
+            display: block;
+            position: absolute;
+            height: 180px;
+            margin-top: -140px;
+            width: 680px;
+        }
+
+        form,
+        fieldset,
+        fieldset label,
+        fieldset input,
+        input[type="submit"] {
+            display: inline;
+            float: left;
+            position: relative;
+        }
+
+        form {
+            width: 620px;
+            padding: 30px;
+            box-shadow: #ddd 0px 2px 8px;
+            background-color: #fff;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            clear: both;
+        }
+
+        fieldset label {
+            display: inline-block;
+        }
+
+        fieldset input[type="text"],
+        fieldset input[type="password"] {
+            border: 1px solid #fff;
+            background-color: #f5f5f5;
+            padding: 10px;
+            width: 200px;
+            margin-bottom: 0px;
+            outline-color: #13b5ea;
+        }
+
+        fieldset input:focus {
+            background: #eee;
+        }
+
+        input[type="submit"] {
+            color: #fff;
+            background-color: #0079c1;
+            text-shadow: #00334e 0px 1px 0px;
+            border-bottom: 1px solid #00334e;
+            border-left: 1px solid #0079c1;
+            border-right: 1px solid #0079c1;
+            border-top: 1px solid #13b5ea;
+            padding: 10px 20px;
+            width: 170px;
+            outline-color: #13b5ea;
+        }
+
+            input[type="submit"]:hover {
+                cursor: pointer;
+                text-shadow: #0079c1 0px 1px 0px;
+                border-top: 1px solid #3dcfff;
+                border-left: 1px solid #13b5ea;
+                border-right: 1px solid #13b5ea;
+                border-bottom: 1px solid #1890d7;
+                background-color: #13b5ea;
+            }
+
+        .vertical p {
+            text-align: center;
+            clear: both;
+        }
+
+        .vertical img {
+            border: none;
+            float: left;
+            margin: 0px 20px 0px 0px;
+            padding: 5px 20px 5px 0px;
+            border-right: 1px solid #ddd;
+        }
+
+        .vertical h1 {
+            float: left;
+            font-size: 20px;
+            margin-top: 3px;
+        }
+
+        a#forgot-password {
+            font-size: 10px;
+            text-decoration: none;
+            color: #aaa;
+            margin-top: 20px;
+            text-shadow: #fff 0px 1px 0px;
+        }
+
+            a#forgot-password:hover {
+                color: #00334e;
+                border-bottom: 1px dotted #00334e;
+            }
+    </style>
+</head>
+<body>
+    @RenderBody()
+</body>
+
+</html>
