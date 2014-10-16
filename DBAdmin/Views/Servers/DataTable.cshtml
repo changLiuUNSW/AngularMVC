@@ -1,0 +1,40 @@
+﻿<div data-ng-controller="AboutController">
+    <div class="row alerts-container" data-ng-controller="AlertsCtrl" data-ng-show="alerts.length">
+        <div class="col-xs-12">
+            <alert data-ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="widget">
+                <div class="widget-title">
+                    <i class="fa fa-users"></i> Users
+                    <button class="btn btn-sm btn-info pull-right" ng-click="toggleFilter(tableParams)" ng-if="!tableParams.settings().$scope.show_filter">
+                        <i class="fa fa-plus"></i>Show Filters
+                    </button>
+                    <button class="btn btn-sm btn-info pull-right" ng-click="toggleFilter(tableParams)" ng-if="tableParams.settings().$scope.show_filter">
+                        <i class="fa fa-minus"></i>Hide Filters
+                    </button>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="widget-body no-padding">
+
+                    <table class="table ng-table-rowselected" ng-table="tableParams" show-filter="false">
+
+
+                        <tr ng-repeat="user in $data" data-ng-click="showDetail(user.name)">
+                            <td data-title="'Name'" sortable="'name'" filter="{ 'name': 'text' }">
+                                {{user.name}}
+                            </td>
+                            <td data-title="'Age'" sortable="'age'" filter="{ 'age': 'text' }">
+                                {{user.age}}
+                            </td>
+                        </tr>
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

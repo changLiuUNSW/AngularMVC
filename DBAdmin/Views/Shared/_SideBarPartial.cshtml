@@ -1,0 +1,31 @@
+﻿<div id="sidebar-wrapper">
+    <ul class="sidebar">
+        <li class="sidebar-main">
+            <a href="#" data-ng-click="toggleSidebar()">
+                Dashboard
+                <span class="menu-icon glyphicon glyphicon-transfer"></span>
+            </a>
+        </li>
+        <li class="sidebar-title"><span>NAVIGATION</span></li>
+        <li class="sidebar-list">
+            <a href="@Url.Action("Index","Home")">Dashboard <span class="menu-icon fa fa-tachometer"></span></a>
+        </li>
+        <li class="sidebar-list">
+            <a href="@Url.Action("Index","Servers")">Servers <span class="menu-icon fa fa-tasks"></span></a>
+        </li>
+        <li class="sidebar-list">
+            <a href="#">Settings <span class="menu-icon fa fa-cogs"></span></a>
+        </li>
+        <li class="sidebar-title separator"><span>QUICK LINKS</span></li>
+        <li class="sidebar-list">
+            <a href="#">About <span class="menu-icon fa fa-external-link"></span></a>
+        </li>
+    </ul>
+    <div class="sidebar-footer">
+        <div class="col-xs-12">
+            <p>
+                <a href="//www.quadservices.com.au/" target="_blank"> &copy; Quad Services @DateTime.Now.Year</a>
+            </p>
+        </div>
+    </div>
+</div>

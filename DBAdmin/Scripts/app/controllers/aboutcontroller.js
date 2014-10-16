@@ -1,6 +1,28 @@
-﻿
+﻿'use strict';
+app.config(function($routeProvider, $locationProvider, cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = true;
+    $routeProvider
+        .when('/',
+        {
+            controller: 'AboutController',
+            templateUrl: '/Servers/DataTable'
+        })
+       .otherwise({
+           controller: function ($window) {
+                $window.location.href='/';
+            }
+        });
+    // Specify HTML5 mode (using the History APIs) or HashBang syntax.
+    $locationProvider.html5Mode(false).hashPrefix('!');
+});
+
+
 app.controller('AboutController', [
-    '$scope', '$filter', 'ngTableParams', function($scope, $filter, ngTableParams) {
+    '$scope', '$filter', 'ngTableParams', '$location', function ($scope, $filter, ngTableParams, $location) {
+        $scope.alerts = [];
+        $scope.showDetail= function(name) {
+            console.log(name);
+        }
         $scope.toggleFilter = function (params) {
             params.settings().$scope.show_filter = !params.settings().$scope.show_filter;
         };

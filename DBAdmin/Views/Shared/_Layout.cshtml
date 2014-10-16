@@ -1,106 +1,66 @@
 ﻿<!Doctype html>
 <html lang="en" ng-app="DBAdmin">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>@ViewBag.Title</title>
+        <title>@ViewBag.Title</title>
 
-    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/dashboard.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/blue.css">
-    <link ref="stylesheet" type="text/css" href="~/Content/loading-bar.min.css">
-    <link rel="stylesheet" type="text/css" href="~/Content/ng-table.css">
-    <!--
-        <link rel="stylesheet" type="text/css" href="css/themes/green.css">
-        <link rel="stylesheet" type="text/css" href="css/themes/red.css">
-        -->
-    @RenderSection("styles", required: false)
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-<body data-ng-controller="MasterCtrl">
-    <div id="page-wrapper" data-ng-class="{'active': toggle}" data-ng-cloak>
+        <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/dashboard.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/blue.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/loading-bar.min.css">
+        <link rel="stylesheet" type="text/css" href="~/Content/ng-table.css">
+        <!--
+            <link rel="stylesheet" type="text/css" href="css/themes/green.css">
+            <link rel="stylesheet" type="text/css" href="css/themes/red.css">
+            -->
+        @RenderSection("styles", false)
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body data-ng-controller="MasterCtrl">
+        <div id="page-wrapper" data-ng-class="{'active': toggle}" data-ng-cloak>
 
-        <!-- Sidebar -->
+            <!-- Sidebar -->
+            @Html.Partial("_SideBarPartial")
 
-        <div id="sidebar-wrapper">
-            <ul class="sidebar">
-                <li class="sidebar-main">
-                    <a href="#" data-ng-click="toggleSidebar()">
-                        Dashboard
-                        <span class="menu-icon glyphicon glyphicon-transfer"></span>
-                    </a>
-                </li>
-                <li class="sidebar-title"><span>NAVIGATION</span></li>
-                <li class="sidebar-list">
-                    <a href="@Url.Action("Index","Home")">Dashboard <span class="menu-icon fa fa-tachometer"></span></a>
-                </li>
-                <li class="sidebar-list">
-                    <a href="#">Servers <span class="menu-icon fa fa-tasks"></span></a>
-                </li>
-                <li class="sidebar-list">
-                    <a href="#">Settings <span class="menu-icon fa fa-cogs"></span></a>
-                </li>
-                <li class="sidebar-title separator"><span>QUICK LINKS</span></li>
-                <li class="sidebar-list">
-                    <a href="@Url.Action("About","Home")">About <span class="menu-icon fa fa-external-link"></span></a>
-                </li>
-            </ul>
-            <div class="sidebar-footer">
-                <div class="col-xs-4">
-                    <a href="https://github.com/Ehesp/Responsive-Dashboard" target="_blank">
-                        Github
-                    </a>
-                </div>
-                <div class="col-xs-4">
-                    <a href="#" target="_blank">
-                        About
-                    </a>
-                </div>
-                <div class="col-xs-4">
-                    <a href="#">
-                        Support
-                    </a>
-                </div>
-            </div>
-        </div>
+            <!-- End Sidebar -->
 
-        <!-- End Sidebar -->
+            <div id="content-wrapper">
+                <div class="page-content">
 
-        <div id="content-wrapper">
-            <div class="page-content">
+                    <!-- Header Bar -->
 
-                <!-- Header Bar -->
-
-                <div class="row header">
-                    <div class="col-xs-12">
-                        <div class="meta pull-left">
-                            <div class="page">
-                                Dashboard
+                    <div class="row header">
+                        <div class="col-xs-12">
+                            <div class="meta pull-left">
+                                <div class="page">
+                                    Dashboard
+                                </div>
+                                <div class="breadcrumb-links">
+                                    Home / Dashboard
+                                </div>
                             </div>
-                            <div class="breadcrumb-links">
-                                Home / Dashboard
-                            </div>
-                        </div>
-                        <div class="user pull-right">
-                            <div class="item dropdown">
-                                @Html.Partial("_LoginPartial")
+                            <div class="user pull-right">
+                                <div class="item dropdown">
+                                    @Html.Partial("_LoginPartial")
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- End Header Bar -->
-                <!-- Main Content -->
-                @RenderBody()
-                <!-- End Main Content -->
+                    <!-- End Header Bar -->
+                    <!-- Main Content -->
+                    @RenderBody()
+                    <!-- End Main Content -->
 
-            </div><!-- End Page Content -->
-        </div><!-- End Content Wrapper -->
-    </div><!-- End Page Wrapper -->
-    @Scripts.Render("~/bundles/scripts");
-    @Scripts.Render("~/bundles/appScripts");
-    @RenderSection("scripts", required: false)
-</body>
+                </div><!-- End Page Content -->
+            </div><!-- End Content Wrapper -->
+        </div><!-- End Page Wrapper -->
+        @Scripts.Render("~/bundles/scripts");
+        @Scripts.Render("~/bundles/appScripts");
+        @RenderSection("scripts", false)
+    </body>
 </html>

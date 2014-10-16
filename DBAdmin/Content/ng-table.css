@@ -134,3 +134,12 @@
     display: block;
   }
 }
+.ng-table-rowselected tr {
+    cursor: pointer;
+}
+
+	/* Define the hover highlight color for the table row */
+.ng-table-rowselected tbody tr:hover {
+          background-color: #EDF1F2;
+    }
+

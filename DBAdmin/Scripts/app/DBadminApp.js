@@ -1,9 +1,5 @@
-﻿var app = angular.module('DBAdmin', ['ui.bootstrap', 'ngCookies', 'ngRoute', 'chieffancypants.loadingBar', 'ngAnimate', 'ngTable'])
-    .config(function (cfpLoadingBarProvider) {
-        cfpLoadingBarProvider.includeSpinner = true;
-
-});
-
+﻿
+var app = angular.module('DBAdmin', ['ui.bootstrap', 'ngCookies', 'ngRoute', 'chieffancypants.loadingBar', 'ngAnimate', 'ngTable']);
 /**
  * Loading Directive
  * @see http://tobiasahlin.com/spinkit/
@@ -15,6 +11,8 @@ app.directive('loading', function () {
         template: '<div class="loading"><div class="double-bounce1"></div><div class="double-bounce2"></div></div>'
     }
 });
+
+
 
 
 /**
@@ -59,17 +57,11 @@ app.controller('MasterCtrl', function ($scope, $cookieStore) {
     window.onresize = function () { $scope.$apply(); };
 });
 
+
 /**
  * Alerts Controller
  */
 app.controller('AlertsCtrl', function ($scope) {
-    $scope.alerts = [ 
-    ];
-
-    $scope.addAlert = function () {
-        $scope.alerts.push({ msg: 'Another alert!' });
-    };
-
     $scope.closeAlert = function (index) {
         $scope.alerts.splice(index, 1);
     };
