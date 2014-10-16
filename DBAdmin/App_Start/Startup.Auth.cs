@@ -17,7 +17,7 @@ namespace DBAdmin
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Account/Login"),
                 CookieName = "QuadServices.DBSystem",
-                ExpireTimeSpan = TimeSpan.FromMinutes(1),
+                ExpireTimeSpan = TimeSpan.FromMinutes(30),
                 SlidingExpiration = true
             });
             // Use a cookie to temporarily store information about a user logging in with a third party login provider

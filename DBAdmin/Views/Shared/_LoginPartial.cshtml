@@ -1,11 +1,17 @@
-﻿<a href="#" class="dropdown-toggle btn btn-success ">
-    <span class="glyphicon glyphicon-user"></span>
-    Hello, Chang
-</a>
-<ul class="dropdown-menu dropdown-menu-right">
-    <li class="link">
-        <a href="#">
-            <i class="fa fa-power-off"></i>Logout
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+ <a href="#" class="dropdown-toggle btn btn-success ">
+            <span class="glyphicon glyphicon-user"></span>
+            Hello, @User.Identity.GetUserName()
         </a>
-    </li>
-</ul>
+        <ul class="dropdown-menu dropdown-menu-right">
+            <li class="link">
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-power-off"></i>&nbsp;Logout</a>
+                }
+            </li>
+        </ul>
+}

@@ -1,5 +1,4 @@
 ﻿using System.Security.Claims;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using DBAdmin.ViewModels;
@@ -13,19 +12,26 @@ namespace DBAdmin.Controllers
     {
         //
         // GET: /Account/Login
+
+        private IAuthenticationManager AuthenticationManager
+        {
+            get { return HttpContext.GetOwinContext().Authentication; }
+        }
+
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
-        private IAuthenticationManager AuthenticationManager
+        // POST: /Account/LogOff
+        [HttpPost]
+        public ActionResult LogOff()
         {
-            get
-            {
-                return HttpContext.GetOwinContext().Authentication;
-            }
+            AuthenticationManager.SignOut();
+            return RedirectToAction("Index", "Home");
         }
+    
         //
         // POST: /Account/Login
         [HttpPost]
@@ -43,7 +49,7 @@ namespace DBAdmin.Controllers
                     ViewBag.StatusMessage = "The username or password you entered is incorrect.";
                     return View(model);
                 }
-                SignIn(identity,false);
+                SignIn(identity, false);
                 return RedirectToLocal(returnUrl);
                 //}
             }
@@ -61,12 +67,14 @@ namespace DBAdmin.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+        //
+      
 
 
         private void SignIn(ClaimsIdentity identity, bool isPersistent)
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-            AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
+            AuthenticationManager.SignIn(new AuthenticationProperties {IsPersistent = isPersistent}, identity);
         }
     }
 }
