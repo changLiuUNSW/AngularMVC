@@ -1,4 +1,4 @@
-﻿'use strict';
+﻿+'use strict';
 app.factory('authService', ['$http', '$q', function ($http, $q) {
 
     var authServiceFactory = {};
