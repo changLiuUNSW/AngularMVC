@@ -1,5 +1,8 @@
 ﻿
-var app = angular.module('DBAdmin', ['ui.bootstrap', 'ngCookies', 'ngRoute', 'chieffancypants.loadingBar', 'ngAnimate', 'ngTable']);
+var app = angular.module('DBAdmin', ['ui.bootstrap', 'ngCookies', 'ngRoute', 'chieffancypants.loadingBar', 'ngAnimate', 'ngTable', 'ngResource'])
+    .config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = true;
+}]);
 /**
  * Loading Directive
  * @see http://tobiasahlin.com/spinkit/

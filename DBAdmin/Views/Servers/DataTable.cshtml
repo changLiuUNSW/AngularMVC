@@ -1,4 +1,5 @@
 ﻿<div data-ng-controller="AboutController">
+
     <div class="row alerts-container" data-ng-controller="AlertsCtrl" data-ng-show="alerts.length">
         <div class="col-xs-12">
             <alert data-ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
@@ -18,10 +19,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="widget-body no-padding">
-
                     <table class="table ng-table-rowselected" ng-table="tableParams" show-filter="false">
-
-
                         <tr ng-repeat="user in $data" data-ng-click="showDetail(user.name)">
                             <td data-title="'Name'" sortable="'name'" filter="{ 'name': 'text' }">
                                 {{user.name}}

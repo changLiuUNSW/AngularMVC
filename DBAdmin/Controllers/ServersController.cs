@@ -15,9 +15,5 @@ namespace DBAdmin.Controllers
             ViewBag.Title = "Servers";
             return View();
         }
-        public ActionResult DataTable()
-        {
-            return PartialView();
-        }
     }
 }
