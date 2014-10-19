@@ -463,6 +463,7 @@
       <DependentUpon>IMS.edmx</DependentUpon>
       <LastGenOutput>IMS.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\toastr.css" />
     <None Include="Scripts\jquery\jquery-2.1.1.intellisense.js" />
     <None Include="Scripts\breeze.intellisense.js" />
     <Content Include="Scripts\breeze.angular.js" />

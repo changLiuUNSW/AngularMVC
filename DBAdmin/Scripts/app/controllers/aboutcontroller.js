@@ -2,8 +2,8 @@
 
 
 app.controller('AboutController', [
-    '$scope', '$filter', 'ngTableParams', 'publicholidayService', 'dataservice', 'logger',
-    function($scope, $filter, ngTableParams, publicholidayService, dataservice, logger) {
+    '$scope', '$filter', 'ngTableParams', 'publicholidayService', 'dataservice', 'logger','$q',
+    function ($scope, $filter, ngTableParams, publicholidayService, dataservice, logger, $q) {
         $scope.alerts = [];
         $scope.showDetail = function(name) {
             console.log(name);
@@ -16,7 +16,7 @@ app.controller('AboutController', [
             // set defaults
             $scope.tableDate = [];
             $scope.page = 1;
-            $scope.pageSize = 10;
+            $scope.pageSize = 20;
             $scope.SortColumn = "Description";
             $scope.SortOrder = "asc";
             $scope.SearchTerm = "";
@@ -82,6 +82,7 @@ app.controller('AboutController', [
                 {
                     total: 0, // length of data
                     getData: function ($defer, params) {
+                        console.log();
                         for (var i in params.sorting()) {
                             $scope.SortColumn = i;
                             $scope.SortOrder = params.sorting()[i];
@@ -94,10 +95,13 @@ app.controller('AboutController', [
                             SortOrder: $scope.SortOrder,
                             Filter: $scope.tableParams.filter()
                         };
-
-                        dataservice.querydays(queryParams).then(function(data) {
-                            $scope.tableDate = data.results;
-                            params.total(data.results.length);
+                        $q.all([
+                            dataservice.querydays(queryParams),
+                            dataservice.queryCount(queryParams)
+                        ]).then(function (response) {
+                            $scope.tableDate = response[0].results;
+                            params.total(response[1].inlineCount);
+                            $defer.resolve();
                         });
                     }
                 }

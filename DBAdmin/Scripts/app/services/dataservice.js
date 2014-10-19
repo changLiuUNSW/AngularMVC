@@ -28,7 +28,8 @@
             reset: reset,
             removePropertyChangeHandler: removePropertyChangeHandler,
             saveChanges: saveChanges,
-            querydays: querydays
+            querydays: querydays,
+            queryCount: queryCount,
         };
         return service;
 
@@ -45,16 +46,25 @@
             });
         }
 
+        function queryCount(queryParams) {
+            var query = breeze.EntityQuery
+   .from("Todos");
+            for (var i in queryParams['Filter']) {
+
+                query = query.where(i, breeze.FilterQueryOp.Contains, queryParams['Filter'][i]);
+            }
+            query = query.inlineCount();
+            var promise = manager.executeQuery(query).catch(function (error) {
+                    logger.error(error.message, "Query failed");
+                    return $q.reject(error); // so downstream promise users know it failed
+                });
+                return promise;
+        }
+
+
         function querydays(queryParams) {
             var query = breeze.EntityQuery
     .from("Todos");
-//            var queryParams = {
-//                PageNumber: $scope.tableParams.page(),
-//                PageSize: $scope.tableParams.count(),
-//                SortColumn: $scope.SortColumn,
-//                SortOrder: $scope.SortOrder,
-//                SearchTerm: $scope.SearchTerm
-            //            };
             for (var i in queryParams['Filter']) {
               
                 query = query.where(i, breeze.FilterQueryOp.Contains, queryParams['Filter'][i]);
@@ -70,13 +80,11 @@
             query = query.skip((queryParams['PageNumber'] - 1) * queryParams['PageSize'])
             .take(queryParams['PageSize']);
           
-            var promise = manager.executeQuery(query).catch(queryFailed);
-            return promise;
-
-            function queryFailed(error) {
+            var promise = manager.executeQuery(query).catch(function (error) {
                 logger.error(error.message, "Query failed");
                 return $q.reject(error); // so downstream promise users know it failed
-            }
+            });
+            return promise;
         }
 
 
