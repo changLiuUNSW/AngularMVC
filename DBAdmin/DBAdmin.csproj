@@ -228,6 +228,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\breeze.directives.css" />
     <Content Include="Content\dashboard.css" />
+    <Content Include="Content\daterangepicker-bs3.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\loading-bar.min.css" />
     <Content Include="Content\loading.css" />
@@ -471,6 +472,9 @@
     <Content Include="Scripts\breeze.directives.js" />
     <Content Include="Scripts\breeze.min.js" />
     <Content Include="Scripts\breeze.savequeuing.js" />
+    <Content Include="Scripts\daterangepicker.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\ng-bs-daterangepicker.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\jquery\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery\jquery-2.1.1.min.js" />

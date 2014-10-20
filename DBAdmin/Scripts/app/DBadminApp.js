@@ -1,6 +1,6 @@
 ﻿
 var app = angular.module('DBAdmin', ['breeze.angular', 'ui.bootstrap', 'ngCookies',
-    'ngRoute', 'chieffancypants.loadingBar', 'ngAnimate', 'ngTable', 'ngResource'])
+    'ngRoute', 'chieffancypants.loadingBar', 'ngAnimate', 'ngTable','ngBootstrap', 'ngResource'])
     .config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = true;
 }]);

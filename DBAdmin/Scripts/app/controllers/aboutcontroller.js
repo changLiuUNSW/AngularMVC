@@ -2,24 +2,28 @@
 
 
 app.controller('AboutController', [
-    '$scope', '$filter', 'ngTableParams', 'publicholidayService', 'dataservice', 'logger','$q',
-    function ($scope, $filter, ngTableParams, publicholidayService, dataservice, logger, $q) {
+    '$scope', '$filter', 'ngTableParams', 'publicholidayService', 'dataservice', 'logger', '$q',
+    function($scope, $filter, ngTableParams, publicholidayService, dataservice, logger, $q) {
         $scope.alerts = [];
         $scope.showDetail = function(name) {
             console.log(name);
         };
         $scope.toggleFilter = function(params) {
             params.settings().$scope.show_filter = !params.settings().$scope.show_filter;
+            $scope.showFilter = params.settings().$scope.show_filter;
+            $scope.tableParams.reload();
         };
 
-        $scope.init = function() {
-            // set defaults
-            $scope.tableDate = [];
-            $scope.page = 1;
-            $scope.pageSize = 20;
-            $scope.SortColumn = "Description";
-            $scope.SortOrder = "asc";
-            $scope.SearchTerm = "";
+      
+
+        // set defaults
+        $scope.showFilter = false;
+        $scope.tableDate = [];
+        $scope.page = 1;
+        $scope.pageSize = 20;
+        $scope.SortColumn = "Description";
+        $scope.SortOrder = "asc";
+        $scope.SearchTerm = "";
 
 //            $scope.tableParams = new ngTableParams({
 //                page: $scope.page,
@@ -72,42 +76,60 @@ app.controller('AboutController', [
 ////                        params.total(result.length);
 ////                    });
 //                }
-            //            });
+        //            });
 
-            $scope.tableParams = new ngTableParams(
-                {
-                    page: $scope.page,
-                    count: $scope.pageSize
-                },
-                {
-                    total: 0, // length of data
-                    getData: function ($defer, params) {
-                        console.log();
-                        for (var i in params.sorting()) {
-                            $scope.SortColumn = i;
-                            $scope.SortOrder = params.sorting()[i];
-                        }
-
-                        var queryParams = {
+        $scope.tableParams = new ngTableParams(
+            {
+                page: $scope.page,
+                count: $scope.pageSize
+            },
+            {
+                total: 0, // length of data
+                getData: function($defer, params) {
+                    for (var i in params.sorting()) {
+                        $scope.SortColumn = i;
+                        $scope.SortOrder = params.sorting()[i];
+                    }
+//                    if ($scope.tableParams.dateRange.startDate || $scope.tableParams.dateRange.endDate) {
+//                        console.log($scope.tableParams.dateRange.startDate.format());
+//                        console.log($scope.tableParams.dateRange.endDate.format());
+//                    }
+                    
+                    var queryParams = {
+                        PageNumber: $scope.tableParams.page(),
+                        PageSize: $scope.tableParams.count(),
+                        SortColumn: $scope.SortColumn,
+                        SortOrder: $scope.SortOrder,
+                        Filter: $scope.tableParams.filter()
+                    };
+                    if (!$scope.showFilter) {
+                        queryParams= {
                             PageNumber: $scope.tableParams.page(),
                             PageSize: $scope.tableParams.count(),
                             SortColumn: $scope.SortColumn,
                             SortOrder: $scope.SortOrder,
-                            Filter: $scope.tableParams.filter()
-                        };
-                        $q.all([
-                            dataservice.querydays(queryParams),
-                            dataservice.queryCount(queryParams)
-                        ]).then(function (response) {
-                            $scope.tableDate = response[0].results;
-                            params.total(response[1].inlineCount);
-                            $defer.resolve();
-                        });
+                            Filter: null
+                        }
                     }
+                    console.log($scope.tableParams.filter());
+                    $q.all([
+                        dataservice.querydays(queryParams),
+                        dataservice.queryCount(queryParams)
+                    ]).then(function(response) {
+                        $scope.tableDate = response[0].results;
+                        params.total(response[1].inlineCount);
+                        $defer.resolve();
+                    });
                 }
-            );
+            }
+        );
+        $scope.tableParams.dateRange = {
+            startDate: null,
+            endDate: null
         };
-        $scope.init();
+        $scope.$watch('tableParams.dateRange', function () {
+            if ($scope.tableParams.dateRange.startDate || $scope.tableParams.dateRange.endDate) $scope.tableParams.reload();
+        });
 
     }
 ]);
