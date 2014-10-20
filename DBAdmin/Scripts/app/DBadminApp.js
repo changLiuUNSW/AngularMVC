@@ -68,7 +68,7 @@ app.factory('logger', [
 /**
  * Master Controller
  */
-app.controller('MasterCtrl', function ($scope, $cookieStore) {
+app.controller('MasterCtrl', ['$scope', '$cookieStore', function ($scope, $cookieStore) {
 
     /**
      * Sidebar Toggle & Cookie Control
@@ -105,14 +105,14 @@ app.controller('MasterCtrl', function ($scope, $cookieStore) {
     };
 
     window.onresize = function () { $scope.$apply(); };
-});
+}]);
 
 
 /**
  * Alerts Controller
  */
-app.controller('AlertsCtrl', function ($scope) {
+app.controller('AlertsCtrl', ['$scope', function ($scope) {
     $scope.closeAlert = function (index) {
         $scope.alerts.splice(index, 1);
     };
-});
+}]);
