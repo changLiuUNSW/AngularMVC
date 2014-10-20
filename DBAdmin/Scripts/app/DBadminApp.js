@@ -77,9 +77,10 @@ app.controller('MasterCtrl', ['$scope', '$cookieStore', function ($scope, $cooki
     var mobileView = 992;
 
     $scope.getWidth = function () { return window.innerWidth; };
-
+    
     $scope.$watch($scope.getWidth, function (newValue, oldValue) {
         if (newValue >= mobileView) {
+            $scope.ShowName = true;
             if (angular.isDefined($cookieStore.get('toggle'))) {
                 if ($cookieStore.get('toggle') == false) {
                     $scope.toggle = false;
@@ -93,6 +94,7 @@ app.controller('MasterCtrl', ['$scope', '$cookieStore', function ($scope, $cooki
             }
         }
         else {
+            $scope.ShowName = false;
             $scope.toggle = false;
         }
 

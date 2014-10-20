@@ -12,10 +12,10 @@
                 <div class="widget-title">
                     <i class="fa fa-users"></i> Users
                     <button class="btn btn-sm btn-info pull-right" ng-click="toggleFilter(tableParams)" ng-if="!showFilter">
-                        <i class="fa fa-plus"></i>Show Filters
+                        <i class="fa fa-plus"></i><span data-ng-show="ShowName">Show Filters</span>
                     </button>
                     <button class="btn btn-sm btn-info pull-right" ng-click="toggleFilter(tableParams)" ng-if="showFilter">
-                        <i class="fa fa-minus"></i>Hide Filters
+                        <i class="fa fa-minus"></i><span data-ng-show="ShowName">Hide Filters</span>
                     </button>
                     <div class="clearfix"></div>
                 </div>
