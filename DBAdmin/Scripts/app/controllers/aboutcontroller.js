@@ -112,7 +112,6 @@ app.controller('AboutController', [
                             Filter: null
                         }
                     }
-                    console.log(queryParams);
                     $q.all([
                         dataservice.querydays(queryParams),
                         dataservice.queryCount(queryParams)
