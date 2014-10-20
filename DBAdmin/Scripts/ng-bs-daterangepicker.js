@@ -60,11 +60,17 @@
                 });
 
                 $element.daterangepicker(options, function (start, end) {
-
                     $scope.$apply(function () {
                         ngModel.$setViewValue({ startDate: start, endDate: end });
                         ngModel.$render();
                     });
+                });
+                $element.on('cancel.daterangepicker', function (ev, picker) {
+                    $scope.$apply(function () {
+                        ngModel.$setViewValue(null);
+                    });
+                    $element.val('');
+                   
                 });
             }
         };

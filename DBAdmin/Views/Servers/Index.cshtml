@@ -20,7 +20,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <script type="text/ng-template" id="ng-table/filters/startingDate.html">
-                    <input type="daterange" ng-model="params.filter()[name]" separator="-" format="DD/MM/YYYY" class="ng-table th.filter input-filter form-control">
+                    <input type="daterange" ng-model="params.filter()[name]" separator="-" format="DD/MM/YYYY" ng-readonly="true" class="ng-table th.filter input-filter form-control">
                 </script>
                 <div class="widget-body no-padding">
                     <table class="table ng-table-rowselected" ng-table="tableParams" show-filter="false">
