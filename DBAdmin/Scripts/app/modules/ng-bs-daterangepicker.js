@@ -6,7 +6,7 @@
 (function (angular) {
     'use strict';
 
-    angular.module('ngBootstrap', []).directive('input', function ($compile, $parse) {
+    angular.module('ngBootstrap', []).directive('input', ['$compile','$parse', function ($compile, $parse) {
         return {
             restrict: 'E',
             require: '?ngModel',
@@ -48,24 +48,18 @@
                 $scope.$watch($attributes.ngModel, function (modelValue) {
                     //TODO:Do not initilize the date range
                     if (!modelValue || (!modelValue.startDate)) {
-//                        console.log('inital');
-//                        ngModel.$setViewValue({ startDate: moment().startOf('day'), endDate: moment().startOf('day') });           
+                        //                        console.log('inital');
+                        //                        ngModel.$setViewValue({ startDate: moment().startOf('day'), endDate: moment().startOf('day') });           
                         return;
                     }
-//                    $element.data('daterangepicker').startDate = modelValue.startDate;
-//                    $element.data('daterangepicker').endDate = modelValue.endDate;
+                    //                    $element.data('daterangepicker').startDate = modelValue.startDate;
+                    //                    $element.data('daterangepicker').endDate = modelValue.endDate;
                     $element.data('daterangepicker').updateView();
                     $element.data('daterangepicker').updateCalendars();
                     $element.data('daterangepicker').updateInputText();
                 });
 
-                $element.daterangepicker(options, function (start, end) {
-                    //TODO:Remove change call back here
-//                    $scope.$apply(function () {
-//                        ngModel.$setViewValue({ startDate: start, endDate: end });
-//                        ngModel.$render();
-//                    });
-                });
+                $element.daterangepicker(options);
                 $element.on('apply.daterangepicker', function (ev, picker) {
                     $scope.$apply(function () {
                         ngModel.$setViewValue({ startDate: picker.oldStartDate, endDate: picker.oldEndDate });
@@ -78,10 +72,10 @@
                         ngModel.$setViewValue(null);
                     });
                     $element.val('');
-                   
+
                 });
             }
         };
-    });
+    }]);
 
 })(angular);

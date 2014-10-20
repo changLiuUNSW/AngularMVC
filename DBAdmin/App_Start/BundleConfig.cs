@@ -28,17 +28,17 @@ namespace DBAdmin
                 .Include("~/Scripts/q.min.js")
                 .Include("~/Scripts/breeze.savequeuing.js")
                 .Include("~/Scripts/angular-ui/ui-bootstrap.js")
-                .Include("~/Scripts/angular-ui/ui-bootstrap-tpls.min.js")
+                .Include("~/Scripts/angular-ui/ui-bootstrap-tpls.js")
 //                .Include("~/Scripts/kendo/2014.1.318/kendo.web.min.js")
 //                .Include("~/Scripts/angular-kendo.js")
-                .Include("~/Scripts/app/modules/loading-bar.min.js")
-                .Include("~/Scripts/app/modules/ng-table.min.js")
+                .Include("~/Scripts/app/modules/loading-bar.js")
+                .Include("~/Scripts/app/modules/ng-table.js")
                 .Include("~/Scripts/moment.js")
                 .Include("~/Scripts/daterangepicker.js")
-                .Include("~/Scripts/ng-bs-daterangepicker.js"));
+                .Include("~/Scripts/app/modules/ng-bs-daterangepicker.js"));
             bundles.Add(new Bundle("~/bundles/appScripts").Include("~/Scripts/app/DBadminApp.js"));
 #if DEBUG
-            BundleTable.EnableOptimizations = false;
+            BundleTable.EnableOptimizations = true;
 #else
             BundleTable.EnableOptimizations = true;
 #endif

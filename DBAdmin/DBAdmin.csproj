@@ -440,7 +440,9 @@
     <Content Include="Scripts\app\controllers\aboutcontroller.js" />
     <Content Include="Scripts\app\controllers\DashBoardController.js" />
     <Content Include="Scripts\app\DBadminApp.js" />
+    <Content Include="Scripts\app\modules\loading-bar.js" />
     <Content Include="Scripts\app\modules\loading-bar.min.js" />
+    <Content Include="Scripts\app\modules\ng-table.js" />
     <Content Include="Scripts\app\modules\ng-table.min.js" />
     <Content Include="Scripts\app\services\dataservice.js" />
     <Content Include="Scripts\app\services\publicHolidayService.js" />
@@ -474,7 +476,7 @@
     <Content Include="Scripts\breeze.savequeuing.js" />
     <Content Include="Scripts\daterangepicker.js" />
     <Content Include="Scripts\moment.js" />
-    <Content Include="Scripts\ng-bs-daterangepicker.js" />
+    <Content Include="Scripts\app\modules\ng-bs-daterangepicker.js" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\jquery\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery\jquery-2.1.1.min.js" />
