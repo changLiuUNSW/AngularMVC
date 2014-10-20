@@ -50,8 +50,17 @@
             var query = breeze.EntityQuery
    .from("Todos");
             for (var i in queryParams['Filter']) {
+                if (i !== 'Date') {
+                    query = query.where(i, breeze.FilterQueryOp.Contains, queryParams['Filter'][i]);
+                } else {
+                    for (var datetype in queryParams['Filter'][i]) {
+                        var startDate = queryParams['Filter'][i]['startDate'].toDate();
+                        var endDate = queryParams['Filter'][i]['endDate'].toDate();
+                        query.where("Date",">",startDate);
 
-                query = query.where(i, breeze.FilterQueryOp.Contains, queryParams['Filter'][i]);
+                    }
+                }
+
             }
             query = query.inlineCount();
             var promise = manager.executeQuery(query).catch(function (error) {
@@ -66,8 +75,17 @@
             var query = breeze.EntityQuery
     .from("Todos");
             for (var i in queryParams['Filter']) {
-              
-                query = query.where(i, breeze.FilterQueryOp.Contains, queryParams['Filter'][i]);
+                if (i !== 'Date') {
+                    query = query.where(i, breeze.FilterQueryOp.Contains, queryParams['Filter'][i]);
+                } else {
+                    for (var datetype in queryParams['Filter'][i]) {
+                        var startDate = queryParams['Filter'][i]['startDate'].toDate();
+                        var endDate = queryParams['Filter'][i]['endDate'].toDate();
+                        console.log(startDate);
+                        query.where("Date", ">", startDate);
+                    }
+                }
+
             }
             if (queryParams['SortColumn']) {
                 if (queryParams['SortOrder']) {

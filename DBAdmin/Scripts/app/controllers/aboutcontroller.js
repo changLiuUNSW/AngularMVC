@@ -90,10 +90,6 @@ app.controller('AboutController', [
                         $scope.SortColumn = i;
                         $scope.SortOrder = params.sorting()[i];
                     }
-//                    if ($scope.tableParams.dateRange.startDate || $scope.tableParams.dateRange.endDate) {
-//                        console.log($scope.tableParams.dateRange.startDate.format());
-//                        console.log($scope.tableParams.dateRange.endDate.format());
-//                    }
                     
                     var queryParams = {
                         PageNumber: $scope.tableParams.page(),
@@ -111,7 +107,7 @@ app.controller('AboutController', [
                             Filter: null
                         }
                     }
-                    console.log($scope.tableParams.filter());
+                    console.log(queryParams);
                     $q.all([
                         dataservice.querydays(queryParams),
                         dataservice.queryCount(queryParams)
@@ -123,13 +119,5 @@ app.controller('AboutController', [
                 }
             }
         );
-        $scope.tableParams.dateRange = {
-            startDate: null,
-            endDate: null
-        };
-        $scope.$watch('tableParams.dateRange', function () {
-            if ($scope.tableParams.dateRange.startDate || $scope.tableParams.dateRange.endDate) $scope.tableParams.reload();
-        });
-
     }
 ]);
