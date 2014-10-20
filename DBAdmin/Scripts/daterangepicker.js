@@ -154,7 +154,7 @@
 
             this.locale = {
                 applyLabel: 'Apply',
-                cancelLabel: 'Cancel',
+                cancelLabel: 'Clear',
                 fromLabel: 'From',
                 toLabel: 'To',
                 weekLabel: 'W',

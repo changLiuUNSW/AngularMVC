@@ -47,13 +47,8 @@
 
                 $scope.$watch($attributes.ngModel, function (modelValue) {
                     //TODO:Do not initilize the date range
-                    if (!modelValue || (!modelValue.startDate)) {
-                        //                        console.log('inital');
-                        //                        ngModel.$setViewValue({ startDate: moment().startOf('day'), endDate: moment().startOf('day') });           
-                        return;
-                    }
-                    //                    $element.data('daterangepicker').startDate = modelValue.startDate;
-                    //                    $element.data('daterangepicker').endDate = modelValue.endDate;
+                    if (!modelValue || (!modelValue.startDate))return;
+                    
                     $element.data('daterangepicker').updateView();
                     $element.data('daterangepicker').updateCalendars();
                     $element.data('daterangepicker').updateInputText();
@@ -62,7 +57,7 @@
                 $element.daterangepicker(options);
                 $element.on('apply.daterangepicker', function (ev, picker) {
                     $scope.$apply(function () {
-                        ngModel.$setViewValue({ startDate: picker.oldStartDate, endDate: picker.oldEndDate });
+                        ngModel.$setViewValue({ startDate: picker.startDate, endDate: picker.endDate });
                         ngModel.$render();
                     });
                 });
