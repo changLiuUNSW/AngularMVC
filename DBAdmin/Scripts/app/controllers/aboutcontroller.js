@@ -22,6 +22,7 @@ app.controller('AboutController', [
       
 
         // set defaults
+        $scope.onloading = true;
         $scope.showFilter = false;
         $scope.tableDate = [];
         $scope.page = 1;
@@ -90,7 +91,7 @@ app.controller('AboutController', [
             },
             {
                 total: 0, // length of data
-                getData: function($defer, params) {
+                getData: function ($defer, params) {
                     for (var i in params.sorting()) {
                         $scope.SortColumn = i;
                         $scope.SortOrder = params.sorting()[i];
@@ -115,7 +116,8 @@ app.controller('AboutController', [
                     $q.all([
                         dataservice.querydays(queryParams),
                         dataservice.queryCount(queryParams)
-                    ]).then(function(response) {
+                    ]).then(function (response) {
+                        $scope.onloading = false;
                         $scope.tableDate = response[0].results;
                         params.total(response[1].inlineCount);
                         $defer.resolve();

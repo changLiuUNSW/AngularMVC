@@ -20,16 +20,24 @@
                     <div class="clearfix"></div>
                 </div>
                 <script type="text/ng-template" id="ng-table/filters/startingDate.html">
-                    <input type="daterange" ng-model="params.filter()[name]" separator="-" format="DD/MM/YYYY" ng-readonly="true" class="ng-table th.filter input-filter form-control">
+                    <input type="daterange" ng-model="params.filter()[name]" separator="-" format="DD/MM/YYYY" ng-readonly="true" class="form-control">
                 </script>
-                <div class="widget-body no-padding">
-                    <table class="table ng-table-rowselected" ng-table="tableParams" show-filter="false">
+                <div class="widget-body no-padding" data-ng-cloak>
+                    <div class="loading" ng-show="onloading">
+                        <div class="double-bounce1"></div><div class="double-bounce2"></div>
+                    </div>
+                    <table class="table ng-table-rowselected" ng-table="tableParams" show-filter="false" ng-show="!onloading">
                         <tr ng-repeat="holiday in tableDate" data-ng-click="showDetail(holiday.ID)">
                             <td data-title="'Holiday'" sortable="'Description'" filter="{ 'Description': 'text' }">
                                 {{holiday.Description}}
                             </td>
                             <td data-title="'Date'" sortable="'Date'" filter="{ 'Date': 'startingDate' }">
                                 {{convertDate(holiday.Date)}}
+                            </td>
+                        </tr>
+                        <tr ng-if="tableDate.length<1">
+                            <td>
+                                Can not find any date
                             </td>
                         </tr>
 

@@ -12,8 +12,8 @@ namespace DBAdmin
 
         public bool Validate(string userName, string password, out ClaimsIdentity identity)
         {
-//            using (var ctx = new PrincipalContext(ContextType.Machine))
-            using (var ctx = new PrincipalContext(ContextType.Domain, DomainName))
+            using (var ctx = new PrincipalContext(ContextType.Machine))
+           // using (var ctx = new PrincipalContext(ContextType.Domain, DomainName))
             {
                 bool isValid = ctx.ValidateCredentials(userName, password);
                 if (isValid)
