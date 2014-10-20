@@ -53,14 +53,17 @@
                 if (i !== 'Date') {
                     query = query.where(i, breeze.FilterQueryOp.Contains, queryParams['Filter'][i]);
                 } else {
-                    for (var datetype in queryParams['Filter'][i]) {
-                        var startDate = queryParams['Filter'][i]['startDate'].toDate();
-                        var endDate = queryParams['Filter'][i]['endDate'].toDate();
-                        query.where("Date",">",startDate);
-
+                    if (queryParams['Filter'][i]) {
+                        if (queryParams['Filter'][i]['startDate']) {
+                            var startDate = queryParams['Filter'][i]['startDate'].toDate();
+                            query = query.where("Date", ">=", startDate);
+                        }
+                        if (queryParams['Filter'][i]['endDate']) {
+                            var endDate = queryParams['Filter'][i]['endDate'].toDate();
+                            query = query.where("Date", "<=", endDate);
+                        }
                     }
                 }
-
             }
             query = query.inlineCount();
             var promise = manager.executeQuery(query).catch(function (error) {
@@ -72,20 +75,22 @@
 
 
         function querydays(queryParams) {
-            var query = breeze.EntityQuery
-    .from("Todos");
+            var query = breeze.EntityQuery.from("Todos");
             for (var i in queryParams['Filter']) {
                 if (i !== 'Date') {
                     query = query.where(i, breeze.FilterQueryOp.Contains, queryParams['Filter'][i]);
                 } else {
-                    for (var datetype in queryParams['Filter'][i]) {
-                        var startDate = queryParams['Filter'][i]['startDate'].toDate();
-                        var endDate = queryParams['Filter'][i]['endDate'].toDate();
-                        console.log(startDate);
-                        query.where("Date", ">", startDate);
+                    if (queryParams['Filter'][i]) {
+                        if (queryParams['Filter'][i]['startDate']) {
+                            var startDate = queryParams['Filter'][i]['startDate'].toDate();
+                            query = query.where("Date", ">=", startDate);
+                        }
+                        if (queryParams['Filter'][i]['endDate']) {
+                            var endDate = queryParams['Filter'][i]['endDate'].toDate();
+                            query = query.where("Date", "<=", endDate);
+                        }
                     }
                 }
-
             }
             if (queryParams['SortColumn']) {
                 if (queryParams['SortOrder']) {
@@ -97,7 +102,6 @@
 
             query = query.skip((queryParams['PageNumber'] - 1) * queryParams['PageSize'])
             .take(queryParams['PageSize']);
-          
             var promise = manager.executeQuery(query).catch(function (error) {
                 logger.error(error.message, "Query failed");
                 return $q.reject(error); // so downstream promise users know it failed
