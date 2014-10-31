@@ -38,7 +38,7 @@ namespace DBAdmin
                 .Include("~/Scripts/app/modules/ng-bs-daterangepicker.js"));
             bundles.Add(new Bundle("~/bundles/appScripts").Include("~/Scripts/app/DBadminApp.js"));
 #if DEBUG
-            BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = false;
 #else
             BundleTable.EnableOptimizations = true;
 #endif

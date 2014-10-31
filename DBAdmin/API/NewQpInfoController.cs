@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+using System.Reflection;
 using System.Web.Http;
-using System.Web.UI.WebControls;
 using DBAdmin.Models;
 using DBAdmin.ViewModels;
 
 namespace DBAdmin.API
 {
+    [Authorize]
     [RoutePrefix("api/NewQpInfo")]
     public class NewQpInfoController : ApiController
     {
@@ -32,7 +32,7 @@ namespace DBAdmin.API
 
         public IHttpActionResult Post(GridParams gridParam)
         {
-            var col = typeof (NewJobPublicHoliday).GetProperty(gridParam.SortColumn);
+            PropertyInfo col = typeof (NewJobPublicHoliday).GetProperty(gridParam.SortColumn);
             return Ok();
         }
     }
